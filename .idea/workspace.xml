@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="19018b68-0514-49bc-8a69-332617488167" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qBfmhOMSrCUPL3kwoztY7ZIzdu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="hm_fusionFR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19018b68-0514-49bc-8a69-332617488167" name="Default Changelist" comment="" />
+      <created>1616558064606</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616558064606</updated>
+      <workItem from="1616558066723" duration="3618000" />
+      <workItem from="1616563130919" duration="47132000" />
+      <workItem from="1617087817257" duration="19869000" />
+      <workItem from="1617697821499" duration="6812000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1360" y="91" key="#Deployment" timestamp="1617697840318">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1360" y="91" key="#Deployment/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617697840318" />
+    <state x="-1326" y="111" key="#Inspections" timestamp="1616563157291">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1326" y="111" key="#Inspections/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1616563157291" />
+    <state x="-1105" y="330" key="Github.ShareDialog" timestamp="1617776313004">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1105" y="330" key="Github.ShareDialog/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617776313004" />
+    <state x="-1421" y="65" key="SettingsEditor" timestamp="1617775351040">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1421" y="65" key="SettingsEditor/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617775351040" />
+    <state x="-1203" y="308" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1617697860804">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1203" y="308" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617697860804" />
+    <state x="-1053" y="163" key="ftp.server.browser" timestamp="1616558152303">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1053" y="163" key="ftp.server.browser/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1616558152303" />
+    <state x="-1295" y="130" width="670" height="676" key="search.everywhere.popup" timestamp="1617084540726">
+      <screen x="-1920" y="-111" width="1920" height="1080" />
+    </state>
+    <state x="-1295" y="130" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617084540726" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/metrics.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
