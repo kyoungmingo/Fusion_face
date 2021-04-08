@@ -305,10 +305,10 @@ class ResNet(nn.Module):
 
 class ResNet_Fusion(nn.Module):
 
-    def __init__(self, block, layers, feature_dim=512, drop_ratio=0.4, zero_init_residual=False):
+    def __init__(self, block, layers, feature_dim=512, drop_ratio=0.4, zero_init_residual=False, num_chanels=7):
         super(ResNet_Fusion, self).__init__()
         self.inplanes = 64
-        self.conv1 = nn.Conv2d(7, 64, kernel_size=7, stride=1, padding=1, bias=False)
+        self.conv1 = nn.Conv2d(num_chanels, 64, kernel_size=7, stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -382,30 +382,58 @@ def resnet18(pretrained=False, **kwargs):
 #     return model
 
 
-def resnetfusion(pretrained=None, **kwargs):
+def resnetfusion(pretrained=None,num_chanels=7, **kwargs):
     device = 'cuda'
-    model = ResNet_Fusion(BasicBlock, [3, 4, 6, 3], **kwargs)
+    model = ResNet_Fusion(BasicBlock, [3, 4, 6, 3],num_chanels=num_chanels, **kwargs)
     model.to(device)
     model = DataParallel(model)
 
     if pretrained is not None:
+
         # RGB 기반의 pretrained weight load
         weight = torch.load(pretrained)
 
-        # Pt + Depth의 conv 생성 및 init
-        # conv = nn.Conv2d(4, 64, kernel_size=7, stride=1, padding=1, bias=False)
-        # conv = nn.init.xavier_uniform_(conv.weight)
-        # conv = conv.to(device)
+        ##3이 아니면으로 묶기##
+        # if num_chanels == 4:
         #
-        # # concat to fusion
-        # fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
+        #     # Pt + Depth의 conv 생성 및 init
+        #     conv = nn.Conv2d(num_chanels-3, 64, kernel_size=7, stride=1, padding=1, bias=False)
+        #     conv = nn.init.xavier_uniform_(conv.weight)
+        #     conv = conv.to(device)
         #
-        # weight['module.conv1.weight'] = fusion
+        #     # concat to fusion
+        #     fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
+        #
+        #     weight['module.conv1.weight'] = fusion
+        #
+        # if num_chanels == 6:
+        #     # Pt + Depth의 conv 생성 및 init
+        #     conv = nn.Conv2d(num_chanels-3, 64, kernel_size=7, stride=1, padding=1, bias=False)
+        #     conv = nn.init.xavier_uniform_(conv.weight)
+        #     conv = conv.to(device)
+        #
+        #     # concat to fusion
+        #     fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
+        #
+        #     weight['module.conv1.weight'] = fusion
+        #
+        # if num_chanels == 7:
+        #     # Pt + Depth의 conv 생성 및 init
+        #     conv = nn.Conv2d(num_chanels-3, 64, kernel_size=7, stride=1, padding=1, bias=False)
+        #     conv = nn.init.xavier_uniform_(conv.weight)
+        #     conv = conv.to(device)
+        #
+        #     # concat to fusion
+        #     fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
+        #
+        #     weight['module.conv1.weight'] = fusion
 
         model.load_state_dict(weight)
 
     return model
 
+
+#zoo fc layer가 name이 다
 def resnet34(pretrained=False, **kwargs):
     """Constructs a ResNet-34 model.
     Args:

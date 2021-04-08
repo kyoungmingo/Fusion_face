@@ -112,7 +112,9 @@ class Dataset(data.Dataset):
         final_img = []
         for i in img_files:
             if i.split('_')[-3] != 'K':
-                a = i + '{0:03d}'.format(83+int(i.split('_')[-2]))
+                #AIhub 데이터만 활용시 83+ 제거
+                #Data augmentation 진행 시 83+ 추
+                a = i + '{0:03d}'.format(int(i.split('_')[-2]))
             else:
                 a = i + '{0:03d}'.format(int(i.split('_')[-2]))
             final_img.append(a)

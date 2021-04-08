@@ -86,7 +86,7 @@ def train(opt):
     final_loss = 1.0
 
     easy_margin = False
-    num_classes = 483
+    num_classes = 83
     save_interval = 1
     optimizer_type = 'adam'
     num_workers = 8  # how many workers for loading data
@@ -138,11 +138,11 @@ def train(opt):
         # opt.test_root = '/mnt/nas2/hm/hm_fusionFR/data/mtcnncropresize/data_num5/test'
 
         ##only AIhub for pretrained weight##
-        # opt.train_root = '/mnt/nas2/kkm/face_recognition/train_data'
+        # opt.train_root = '/mnt/nas1/k_kkm/face_recognition/train_data'
 
         ##fusion crop data##
-        opt.train_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data82/train"
-        opt.test_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data82/test"
+        opt.train_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data73/train"
+        opt.test_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data73/test"
 
     print('train data path : ', opt.train_root)
 
@@ -158,8 +158,8 @@ def train(opt):
         trainloader = torch_data.DataLoader(train_dataset,
                                       batch_size=opt.train_batch_size,
                                       shuffle=True,
-                                      num_workers = num_workers,pin_memory = True)
-                                            # ,drop_last = True)
+                                      num_workers = num_workers,pin_memory = True
+                                            ,drop_last = True)
 
         # test_batchsize=len(test_dataset)
         test_batchsize=opt.test_batch_size
@@ -167,8 +167,8 @@ def train(opt):
         testloader = torch_data.DataLoader(test_dataset,
                                             batch_size=test_batchsize,
                                             shuffle=True,
-                                            num_workers=num_workers,pin_memory = True)
-                                           # ,drop_last = True)
+                                            num_workers=num_workers,pin_memory = True
+                                           ,drop_last = True)
 
 
     ##test root default를 None으로 수정하였음##
@@ -205,7 +205,16 @@ def train(opt):
     else:
         criterion = torch.nn.CrossEntropyLoss()
 
-    num_chanels = 7 if opt.feature_type == 'full' else 3
+    if opt.feature_type == 'rgb':
+        num_chanels = 3
+    elif opt.feature_type == 'depth':
+        num_chanels = 4
+    elif opt.feature_type == 'points':
+        num_chanels = 6
+    elif opt.feature_type == 'full':
+        num_chanels = 7
+
+    # num_chanels = 7 if opt.feature_type == 'full' else 3
     print('num_chanels : ',num_chanels)
 
     if backbone == 'resnet18':
@@ -220,7 +229,7 @@ def train(opt):
     elif backbone == 'SAC':
         model = Backbone_pt()
     else:
-        model = resnetfusion(pretrained=opt.pretrained)
+        model = resnetfusion(pretrained=opt.pretrained,num_chanels=num_chanels)
     print(backbone)
 
 
@@ -237,7 +246,7 @@ def train(opt):
     print(opt.metric)
 
     # view_model(model, opt.input_shape)
-    if backbone != 'fusion':
+    if backbone not in  ['fusion']:
         model.to(device)
         model = DataParallel(model)
         print(model)

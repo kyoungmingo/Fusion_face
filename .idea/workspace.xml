@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19018b68-0514-49bc-8a69-332617488167" name="Default Changelist" comment="0407&#10;Transfer learning code 작성 for fusion">
+    <list default="true" id="19018b68-0514-49bc-8a69-332617488167" name="Default Changelist" comment="0408&#10;RGB, Depth, Point Cloud&#10;&#10;&gt;&gt;face alignment(crop) and resize 진행&#10;&gt;&gt;npy 확장자 저장">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backbone/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/backbone/resnet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rgbaug_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/rgbaug_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +84,7 @@
       <workItem from="1616558066723" duration="3618000" />
       <workItem from="1616563130919" duration="47132000" />
       <workItem from="1617087817257" duration="19869000" />
-      <workItem from="1617697821499" duration="15233000" />
+      <workItem from="1617697821499" duration="29319000" />
     </task>
     <task id="LOCAL-00001" summary="0407&#10;Transfer learning code 작성 for fusion">
       <created>1617776376032</created>
@@ -91,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617776376033</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="0408&#10;RGB, Depth, Point Cloud&#10;&#10;&gt;&gt;face alignment(crop) and resize 진행&#10;&gt;&gt;npy 확장자 저장">
+      <created>1617841388767</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617841388769</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,7 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="0407&#10;Transfer learning code 작성 for fusion" />
-    <option name="LAST_COMMIT_MESSAGE" value="0407&#10;Transfer learning code 작성 for fusion" />
+    <MESSAGE value="0408&#10;RGB, Depth, Point Cloud&#10;&#10;&gt;&gt;face alignment(crop) and resize 진행&#10;&gt;&gt;npy 확장자 저장" />
+    <option name="LAST_COMMIT_MESSAGE" value="0408&#10;RGB, Depth, Point Cloud&#10;&#10;&gt;&gt;face alignment(crop) and resize 진행&#10;&gt;&gt;npy 확장자 저장" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1360" y="91" key="#Deployment" timestamp="1617697840318">
@@ -118,10 +128,10 @@
       <screen x="-1920" y="-111" width="1920" height="1080" />
     </state>
     <state x="-1421" y="65" key="SettingsEditor/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617775351040" />
-    <state x="-1360" y="166" key="Vcs.Push.Dialog.v2" timestamp="1617776409516">
+    <state x="-1360" y="166" key="Vcs.Push.Dialog.v2" timestamp="1617841399901">
       <screen x="-1920" y="-111" width="1920" height="1080" />
     </state>
-    <state x="-1360" y="166" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617776409516" />
+    <state x="-1360" y="166" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-111.1920.1080@-1920.-111.1920.1080" timestamp="1617841399901" />
     <state x="-1203" y="308" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1617697860804">
       <screen x="-1920" y="-111" width="1920" height="1080" />
     </state>
