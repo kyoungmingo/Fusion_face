@@ -6,7 +6,11 @@ from torch.utils.tensorboard import SummaryWriter
 # from fusion_dataset import Dataset
 
 ##data augmentation 수정##
-from rgbaug_dataset import Dataset
+# from rgbaug_dataset import Dataset
+
+##data fusion##
+from dataset import Dataset
+
 from PIL import Image
 from torch.utils import data as torch_data
 from focal_loss import FocalLoss
@@ -52,27 +56,27 @@ def imshow(img,one_ch = False):
 def train(opt):
 
     ##valid data 추가 0401####################################
-    normalize = T.Normalize(mean=[0.5, 0.5, 0.5],
-                            std=[0.5, 0.5, 0.5])
-    valid_transforms = T.Compose([
-        T.ToTensor(),
-        T.CenterCrop((128, 128)),
-        normalize
-    ])
-    my_path = "/mnt/nas2/kkm/face_recognition/testcrop_resize_"
-    img = [my_path + str(i) + '.jpg' for i in range(1, 16)]
-    for i in img:
-        data = Image.open(i)
-        b, g, r = data.split()
-        data = Image.merge("RGB", (r, g, b))
-        data = valid_transforms(data)
-        data = data.unsqueeze(0)
-        if i == '/mnt/nas2/kkm/face_recognition/testcrop_resize_1.jpg':
-            fdata = data
-        else:
-            fdata = torch.cat((fdata, data), dim=0)
-
-    real_ans = [5, 5, 8, 8, 8, 8, 8, 7, 7, 1, 1, 2, 2, 0, 0]
+    # normalize = T.Normalize(mean=[0.5, 0.5, 0.5],
+    #                         std=[0.5, 0.5, 0.5])
+    # valid_transforms = T.Compose([
+    #     T.ToTensor(),
+    #     T.CenterCrop((128, 128)),
+    #     normalize
+    # ])
+    # my_path = "/mnt/nas2/kkm/face_recognition/testcrop_resize_"
+    # img = [my_path + str(i) + '.jpg' for i in range(1, 16)]
+    # for i in img:
+    #     data = Image.open(i)
+    #     b, g, r = data.split()
+    #     data = Image.merge("RGB", (r, g, b))
+    #     data = valid_transforms(data)
+    #     data = data.unsqueeze(0)
+    #     if i == '/mnt/nas2/kkm/face_recognition/testcrop_resize_1.jpg':
+    #         fdata = data
+    #     else:
+    #         fdata = torch.cat((fdata, data), dim=0)
+    #
+    # real_ans = [5, 5, 8, 8, 8, 8, 8, 7, 7, 1, 1, 2, 2, 0, 0]
     ##########################################################
 
 
@@ -126,8 +130,8 @@ def train(opt):
     else:
         ##data augmentation 수정##
         ##AIhub + our##
-        opt.train_root = "/mnt/nas2/kkm/face_recognition/facedata/train"
-        opt.test_root = "/mnt/nas2/kkm/face_recognition/facedata/test"
+        # opt.train_root = "/mnt/nas2/kkm/face_recognition/facedata/train"
+        # opt.test_root = "/mnt/nas2/kkm/face_recognition/facedata/test"
 
         ##5 shot##
         # opt.train_root = '/mnt/nas2/hm/hm_fusionFR/data/mtcnncropresize/data_num5/train'
@@ -135,6 +139,10 @@ def train(opt):
 
         ##only AIhub for pretrained weight##
         # opt.train_root = '/mnt/nas2/kkm/face_recognition/train_data'
+
+        ##fusion crop data##
+        opt.train_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data82/train"
+        opt.test_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data82/test"
 
     print('train data path : ', opt.train_root)
 
@@ -150,8 +158,8 @@ def train(opt):
         trainloader = torch_data.DataLoader(train_dataset,
                                       batch_size=opt.train_batch_size,
                                       shuffle=True,
-                                      num_workers = num_workers,pin_memory = True
-                                            ,drop_last = True)
+                                      num_workers = num_workers,pin_memory = True)
+                                            # ,drop_last = True)
 
         # test_batchsize=len(test_dataset)
         test_batchsize=opt.test_batch_size
@@ -159,8 +167,8 @@ def train(opt):
         testloader = torch_data.DataLoader(test_dataset,
                                             batch_size=test_batchsize,
                                             shuffle=True,
-                                            num_workers=num_workers,pin_memory = True
-                                           ,drop_last = True)
+                                            num_workers=num_workers,pin_memory = True)
+                                           # ,drop_last = True)
 
 
     ##test root default를 None으로 수정하였음##
@@ -367,11 +375,11 @@ def train(opt):
             print('test output : ',test_output)
 
         #############valid추가#############
-        valid_feature = model(fdata)
-        vaild_output = metric_fc(valid_feature)
-        vaild_output = np.argmax(vaild_output.cpu().detach().numpy(), axis=1)
-
-        res = [real_ans[i] == vaild_output[i] for i in range(len(real_ans))]
+        # valid_feature = model(fdata)
+        # vaild_output = metric_fc(valid_feature)
+        # vaild_output = np.argmax(vaild_output.cpu().detach().numpy(), axis=1)
+        #
+        # res = [real_ans[i] == vaild_output[i] for i in range(len(real_ans))]
         #############valid추가#############
 
         print('train nums : ', opt.train_nums)
@@ -391,9 +399,9 @@ def train(opt):
         print('train epoch {}  loss {} acc : {}'.format(i, np.array(total_loss).mean(), np.array(total_acc).mean()))
 
         print('running time by one epoch : ', time.time() - epoch_starttime, ' seconds')
-        print('valid real: ', real_ans)
-        print('valid output: ', vaild_output)
-        print('valid acc: ', sum(res))
+        # print('valid real: ', real_ans)
+        # print('valid output: ', vaild_output)
+        # print('valid acc: ', sum(res))
 
             # batch size를 줄이던, test시에 결과를 확인할 수 있음.
             # writer.add_figure('visualize',plot_classes_preds(output,data_input,label),
@@ -407,7 +415,7 @@ def train(opt):
         writer.add_scalar('test loss', np.array(total_test_loss).mean(), i)
         writer.add_scalar('train acc', round(((train_corrects) / trl),7  ), i)
         writer.add_scalar('test acc', round(((test_corrects) / tll),7  ), i)
-        writer.add_scalar('valid acc',sum(res), i)
+        # writer.add_scalar('valid acc',sum(res), i)
 
         if i % save_interval == 0 or i == max_epoch:
             if not os.path.exists(opt.checkpoints_path):

@@ -10,7 +10,7 @@ import math
 import torch.utils.model_zoo as model_zoo
 import torch.nn.utils.weight_norm as weight_norm
 import torch.nn.functional as F
-
+from torch.nn import DataParallel
 
 # __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
 #            'resnet152']
@@ -383,7 +383,9 @@ def resnet18(pretrained=False, **kwargs):
 
 
 def resnetfusion(pretrained=None, **kwargs):
+    device = 'cuda'
     model = ResNet_Fusion(BasicBlock, [3, 4, 6, 3], **kwargs)
+    model.to(device)
     model = DataParallel(model)
 
     if pretrained is not None:
@@ -391,14 +393,14 @@ def resnetfusion(pretrained=None, **kwargs):
         weight = torch.load(pretrained)
 
         # Pt + Depth의 conv 생성 및 init
-        conv = nn.Conv2d(4, 64, kernel_size=7, stride=1, padding=1, bias=False)
-        conv = nn.init.xavier_uniform_(conv.weight)
-        conv = conv.to(device)
-
-        # concat to fusion
-        fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
-
-        weight['module.conv1.weight'] = fusion
+        # conv = nn.Conv2d(4, 64, kernel_size=7, stride=1, padding=1, bias=False)
+        # conv = nn.init.xavier_uniform_(conv.weight)
+        # conv = conv.to(device)
+        #
+        # # concat to fusion
+        # fusion = torch.cat((conv, weight['module.conv1.weight']), dim=1)
+        #
+        # weight['module.conv1.weight'] = fusion
 
         model.load_state_dict(weight)
 
