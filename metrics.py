@@ -199,3 +199,19 @@ class InnerProduct(nn.Module):
         x = self.output_layer(input)
         output = F.linear(x, self.weight)
         return output
+
+
+class fc_product(nn.Module):
+    def __init__(self):
+        super(fc_product, self).__init__()
+        self.output_layer = nn.Sequential(nn.BatchNorm2d(512 * 1),
+                                  nn.Dropout(0.4),
+                                  Flatten(),
+                                  nn.Linear(512 * 1 * 8 * 8, 512),
+                                  nn.BatchNorm1d(512))
+
+
+    def forward(self, input):
+        # label not used
+        x = self.output_layer(input)
+        return x

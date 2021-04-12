@@ -385,6 +385,7 @@ def resnet18(pretrained=False, **kwargs):
 def resnetfusion(pretrained=None,num_chanels=7, **kwargs):
     device = 'cuda'
     model = ResNet_Fusion(BasicBlock, [3, 4, 6, 3],num_chanels=num_chanels, **kwargs)
+    # model = ResNet_Fusion(BasicBlock, [2, 2, 2, 2], num_chanels=num_chanels, **kwargs)
     model.to(device)
     model = DataParallel(model)
 

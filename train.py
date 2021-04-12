@@ -141,8 +141,8 @@ def train(opt):
         # opt.train_root = '/mnt/nas1/k_kkm/face_recognition/train_data'
 
         ##fusion crop data##
-        opt.train_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data73/train"
-        opt.test_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/data73/test"
+        opt.train_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/shot3/train"
+        opt.test_root = "/mnt/nas1/k_hm3346/hm/hm_fusionFR/newdata/shot3/test"
 
     print('train data path : ', opt.train_root)
 

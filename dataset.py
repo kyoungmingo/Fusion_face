@@ -109,6 +109,11 @@ class Dataset(data.Dataset):
                 T.CenterCrop((128,128))
             ])
 
+        self.transforms3 = T.Compose([
+            T.RandomHorizontalFlip()
+
+        ])
+
         print(self.feature_type)
 
     def __getitem__(self, index):
@@ -133,6 +138,9 @@ class Dataset(data.Dataset):
         label = np.int32(data[-3:])
 
         proj = torch.cat((img, points), dim=0)
+
+        proj = self.transforms3(proj)
+
 
         if self.feature_type == 'rgb':
             proj2 = proj[0:3,:,:]
