@@ -18,8 +18,11 @@ For more details, please refer to our paper: [SqueezeFace](https://www.hindawi.c
 ## Reference
 
 https://github.com/ronghuaiyang/arcface-pytorch
+
 https://github.com/deepinsight/insightface
+
 https://github.com/auroua/InsightFace_TF
+
 https://github.com/MuggleWang/CosFace_pytorch
 
 ------------
